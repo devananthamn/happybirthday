@@ -1,0 +1,591 @@
+/* ==========================================================================
+   🎀 COQUETTE SCRAPBOOK DESIGN SYSTEM & TOKENS
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-blush-pink: #F8C8DC;
+  --color-pastel-pink: #FCE4EC;
+  --color-cream-white: #FFF9F5;
+  --color-rose-pink: #E88EAD;
+  --color-deep-berry: #9D4268;
+  --color-lavender: #E8DEF8;
+  --color-champagne-gold: #F3E5AB;
+  --color-gold-accent: #DFBA73;
+  --color-dark-berry: #4A1A2E;
+  --color-text-primary: #3D232F;
+  --color-text-secondary: #6B4958;
+  --color-text-muted: #9E7D8C;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-script: 'Dancing Script', 'Sacramento', cursive;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Glassmorphism & Cards */
+  --card-bg: rgba(255, 249, 245, 0.88);
+  --card-border: 1px solid rgba(232, 142, 173, 0.35);
+  --card-radius: 24px;
+  --card-shadow: 0 16px 40px -10px rgba(157, 66, 104, 0.12), 0 4px 12px rgba(248, 200, 220, 0.2);
+  --hover-shadow: 0 22px 50px -10px rgba(157, 66, 104, 0.22), 0 8px 20px rgba(232, 142, 173, 0.3);
+
+  /* Transitions */
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Reset & Smoothness */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-cream-white);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(248, 200, 220, 0.35) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(252, 228, 236, 0.45) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(232, 142, 173, 0.25) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(232, 222, 248, 0.3) 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Sweet selection highlight */
+::selection {
+  background: var(--color-blush-pink);
+  color: var(--color-deep-berry);
+}
+
+/* Custom delicate scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose-pink);
+  border-radius: 10px;
+  border: 2px solid var(--color-cream-white);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-deep-berry);
+}
+
+/* Typography Helpers */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  color: var(--color-deep-berry);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #E88EAD 0%, #D4698E 50%, #9D4268 100%);
+  color: #FFF;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(157, 66, 104, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  transition: var(--transition-spring);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 32px -4px rgba(157, 66, 104, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-deep-berry);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-rose-pink);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: var(--color-pastel-pink);
+  transform: translateY(-2px);
+  border-color: var(--color-deep-berry);
+}
+
+/* Romantic Glass Cards */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.glass-card:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  position: absolute;
+  height: 24px;
+  width: 90px;
+  background: rgba(248, 200, 220, 0.85);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-left: 2px dashed rgba(255, 255, 255, 0.7);
+  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 5;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+.washi-tape.tape-left {
+  top: -10px;
+  left: 20px;
+}
+
+.washi-tape.tape-right {
+  top: -10px;
+  right: 20px;
+  transform: rotate(3deg);
+}
+
+/* Cute Badge Pill */
+.badge-coquette {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(252, 228, 236, 0.9);
+  border: 1px solid rgba(232, 142, 173, 0.5);
+  color: var(--color-deep-berry);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(157, 66, 104, 0.08);
+}
+
+/* Animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-2deg);
+  }
+}
+
+@keyframes pulseHeart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1) rotate(-1deg);
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.9));
+  }
+  25% {
+    transform: scaleY(1.08) scaleX(0.95) rotate(2deg);
+    filter: drop-shadow(0 0 12px rgba(255, 180, 0, 1));
+  }
+  50% {
+    transform: scaleY(0.94) scaleX(1.04) rotate(-2deg);
+    filter: drop-shadow(0 0 7px rgba(255, 215, 0, 0.85));
+  }
+  75% {
+    transform: scaleY(1.05) scaleX(0.97) rotate(1deg);
+    filter: drop-shadow(0 0 11px rgba(255, 190, 0, 0.95));
+  }
+}
+
+@keyframes candleSmoke {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1.8) rotate(15deg);
+  }
+}
+
+.animate-pulse-heart {
+  animation: pulseHeart 2s ease-in-out infinite;
+}
+
+/* 🎀 Icons8 Bubbles Interactive Icons */
+.bubble-icons-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: -20px;
+  flex-wrap: nowrap;
+  padding: 12px 0;
+}
+
+.bubble-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  position: relative;
+  outline: none;
+  transition: z-index 0.2s ease;
+}
+
+.bubble-icon-btn:focus-visible {
+  outline: 2px solid var(--color-rose-pink);
+  outline-offset: 4px;
+}
+
+.bubble-icon-img-wrapper {
+  width: clamp(80px, 16vw, 110px);
+  height: clamp(80px, 16vw, 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  filter: drop-shadow(0 8px 18px rgba(157, 66, 104, 0.16));
+  transition: filter 0.35s ease;
+}
+
+.bubble-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  transform-origin: center bottom;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, filter 0.35s ease;
+}
+
+/* Hover: icon becomes dramatically big, lifts up and glows */
+.bubble-icon-btn:hover {
+  z-index: 30;
+}
+
+.bubble-icon-btn:hover .bubble-icon-img-wrapper {
+  animation-play-state: paused;
+  filter: drop-shadow(0 22px 35px rgba(157, 66, 104, 0.45)) brightness(1.08);
+}
+
+.bubble-icon-btn:hover .bubble-icon-img {
+  transform: translateY(-14px) scale(1.36) rotate(-2.5deg);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+}
+
+.bubble-icon-btn:nth-child(2):hover .bubble-icon-img {
+  transform: translateY(-16px) scale(1.38) rotate(0deg);
+}
+
+.bubble-icon-btn:nth-child(3):hover .bubble-icon-img {
+  transform: translateY(-14px) scale(1.36) rotate(2.5deg);
+}
+
+.bubble-icon-btn:active .bubble-icon-img {
+  transform: translateY(-4px) scale(1.18);
+  transition-duration: 0.15s;
+}
+
+/* Sibling icons gently step back when one is hovered */
+.bubble-icons-container:hover .bubble-icon-btn:not(:hover) .bubble-icon-img {
+  transform: scale(0.9);
+  opacity: 0.78;
+}
+
+/* Gentle floating cadence for the 3 icons */
+.bubble-float-1 {
+  animation: floatGentle 4.2s ease-in-out infinite;
+}
+.bubble-float-2 {
+  animation: floatGentle 4.6s ease-in-out infinite 0.6s;
+}
+.bubble-float-3 {
+  animation: floatGentle 4.4s ease-in-out infinite 1.2s;
+}
+
+/* Section Container */
+.section-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 50px 16px;
+  }
+}
+
+/* ============================================================
+   📱 GLOBAL MOBILE RESPONSIVENESS FIXES
+   ============================================================ */
+
+/* Prevent horizontal overflow everywhere */
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Touch improvements */
+button, a, input, textarea, select {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(232, 142, 173, 0.25);
+}
+
+/* Prevent auto-zoom on iOS inputs by ensuring min 16px font-size */
+input, textarea, select {
+  font-size: 16px !important;
+}
+
+/* Make images safe on all widths */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile responsive labels for bubble icons */
+.bubble-icon-label {
+  display: block;
+  font-size: clamp(0.72rem, 2.2vw, 0.85rem);
+  font-weight: 700;
+  color: var(--color-deep-berry);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.bubble-icon-btn:hover .bubble-icon-label,
+.bubble-icon-btn:active .bubble-icon-label {
+  color: #D4698E;
+  transform: translateY(2px);
+}
+
+/* ---- Cake: scale the fixed-width tiers on small screens ---- */
+.cake-scale-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  overflow: visible;
+  transform-origin: bottom center;
+}
+
+@media (max-width: 480px) {
+  .cake-scale-wrapper {
+    transform: scale(0.88);
+  }
+}
+
+@media (max-width: 380px) {
+  .cake-scale-wrapper {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 320px) {
+  .cake-scale-wrapper {
+    transform: scale(0.68);
+  }
+}
+
+/* ---- Music Player: compact on small screens ---- */
+@media (max-width: 480px) {
+  .music-player-wrapper {
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    right: 12px !important;
+  }
+  .music-player-song-info {
+    max-width: 95px !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+/* ---- HeroSection on mobile ---- */
+@media (max-width: 480px) {
+  .hero-vignette-card {
+    padding: 16px 14px 14px !important;
+    border-radius: 20px !important;
+  }
+  .hero-stats-grid {
+    gap: 6px !important;
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+  }
+  .bubble-icons-container {
+    gap: clamp(-8px, -1.5vw, -14px) !important;
+    padding: 6px 0 !important;
+  }
+  .bubble-icon-img-wrapper {
+    width: clamp(74px, 22vw, 92px) !important;
+    height: clamp(74px, 22vw, 92px) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-vignette-card {
+    padding: 12px 10px 10px !important;
+  }
+  .hero-stats-grid {
+    gap: 4px !important;
+  }
+  .bubble-icon-img-wrapper {
+    width: clamp(62px, 20vw, 76px) !important;
+    height: clamp(62px, 20vw, 76px) !important;
+  }
+}
+
+/* ---- FriendshipScrapbook on mobile ---- */
+@media (max-width: 640px) {
+  .scrapbook-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)) !important;
+    gap: 20px !important;
+    padding: 8px 4px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .scrapbook-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+}
+
+/* ---- Lightbox safe size on mobile ---- */
+@media (max-width: 600px) {
+  .lightbox-img {
+    max-height: clamp(220px, 50vh, 360px) !important;
+  }
+}
+
+/* ---- Back-to-home button: full-width on mobile ---- */
+@media (max-width: 480px) {
+  .back-home-btn {
+    width: 100% !important;
+    max-width: 320px;
+    justify-content: center;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ---- Wish-writing card: full-width padding on mobile ---- */
+@media (max-width: 480px) {
+  .wish-card {
+    padding: 20px 14px !important;
+  }
+  .wish-card textarea {
+    font-size: 16px !important; /* Prevents iOS auto-zoom */
+  }
+}
+
+/* ---- Opening Surprise modal card on mobile ---- */
+@media (max-width: 480px) {
+  .opening-surprise-card {
+    padding: 28px 16px !important;
+    border-radius: 24px !important;
+  }
+}
+
+/* ---- Birthday Letter envelope on mobile ---- */
+@media (max-width: 480px) {
+  .letter-envelope {
+    max-width: 100% !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* ---- Desktop max-width safeguards (wide monitors) ---- */
+@media (min-width: 1400px) {
+  .section-wrapper {
+    padding-left: calc((100vw - 1200px) / 2);
+    padding-right: calc((100vw - 1200px) / 2);
+    max-width: 100%;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
